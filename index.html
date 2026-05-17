@@ -44,7 +44,6 @@
       position: relative;
     }
 
-    /* شبكة خلفية متحركة ناعمة */
     body::before {
       content: "";
       position: fixed;
@@ -66,7 +65,6 @@
       position: relative;
     }
 
-    /* HEADER SECTION */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -113,7 +111,6 @@
       margin-bottom: 35px;
     }
 
-    /* كرت التعريف */
     .profile-master-card {
       background: var(--bg-card);
       backdrop-filter: blur(12px);
@@ -203,7 +200,6 @@
       background: rgba(56, 189, 248, 0.08);
     }
 
-    /* حاوية اللوجو - هتستقبل صورتك */
     .image-frame-holder {
       display: flex;
       justify-content: center;
@@ -234,7 +230,6 @@
       border-radius: 32px;
     }
 
-    /* Features grid */
     .features-section { padding: 60px 0; }
     .section-header {
       text-align: center;
@@ -292,7 +287,6 @@
     .glow-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
     .glow-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
 
-    /* MASTER PRICING CARD */
     .pricing-section { padding: 60px 0; }
     .master-pricing-card {
       background: linear-gradient(125deg, rgba(15,23,42,0.85), rgba(30,41,59,0.85));
@@ -406,7 +400,6 @@
     }
     .instapay-trigger:hover { text-decoration: underline; }
 
-    /* FORM */
     .checkout-section { padding: 40px 0 90px; }
     .cyber-form-card {
       background: var(--bg-card);
@@ -457,7 +450,6 @@
       box-shadow: 0 12px 24px rgba(34,197,94,0.4);
     }
 
-    /* MODAL */
     .custom-modal {
       position: fixed;
       top: 0; left: 0;
@@ -492,7 +484,6 @@
     }
     .modal-main-card img { width: 100%; border-radius: 24px; margin-top: 15px; }
 
-    /* FLOATING BTN */
     .sticky-whatsapp-button {
       position: fixed;
       bottom: 25px;
@@ -538,7 +529,6 @@
     }
     .social-circuits a:hover { background: var(--primary); transform: translateY(-5px); }
 
-    /* RESPONSIVE */
     @media (max-width: 1000px) {
       .hero-content, .master-pricing-card { grid-template-columns: 1fr; }
       .hero-content .hero-text { order: 1; text-align: center; }
@@ -582,7 +572,6 @@
         </div>
       </div>
 
-      <!--这里是放置你的专属LOGO的区域，直接放图片logo.png -->
       <div class="image-frame-holder animate__animated animate__fadeInLeft">
         <div class="custom-logo-wrapper">
           <img class="brand-logo-img" src="logo1.png" alt="شعار د. سلمى منتصر" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Dr.+Salma+Logo';">
@@ -672,20 +661,16 @@
     </div>
   </section>
 
-  <!-- Modal instapay -->
   <div class="custom-modal" id="instapay-guide-popup" onclick="closeModalOnOuterClick(event)">
     <div class="modal-main-card">
       <button class="modal-close-trigger" onclick="handleModalVisibility(false)"><i class="fa-solid fa-xmark"></i></button>
       <h3 style="font-weight: 800;">🔐 خطوات انستا باي</h3>
       <p style="margin: 15px 0; font-size: 14px;">1. افتح تطبيق انستا باي <br>2. اختر تحويل لبطاقة: <strong>5078086726548154</strong><br>3. اكتب الاسم:- سلمى منتصر<br>4. بعد التحويل، أرسل لقطة الشاشة عبر الواتساب لتفعيل حسابك</p>
-      </p>
-      <!-- 👇👇👇 هنا مكان صورتك 👇👇👇 -->
       <img src="instapay.png" alt="خطوات انستا باي" style="width: 100%; max-width: 300px; margin: 15px auto 0; display: block; border-radius: 16px;">
-    </div>
     </div>
   </div>
 
-  <a href="https://wa.me/201211244260" target="_blank" class="sticky-whatsapp-button" title="تواصل واتساب">
+  <a href="https://wa.me/201064651563" target="_blank" class="sticky-whatsapp-button" title="تواصل واتساب">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -696,7 +681,7 @@
       <div class="social-circuits">
         <a href="https://www.facebook.com/share/188jZAboFD/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="https://youtube.com/@engsalmamontaser1977" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://wa.me/201211244260" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://wa.me/201064651563" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
       <p style="color: #475569; font-size: 13px;">&copy; 2026 د. سلمى منتصر - جميع الحقوق محفوظة</p>
     </div>
@@ -743,18 +728,18 @@
       }
 
       const invoiceMessage = 
-`📌 *فاتورة اشتراك مراجعة البرمجة - د. سلمى منتصر* 📌
+`📌 فاتورة اشتراك مراجعة البرمجة - د. سلمى منتصر 📌
 ━━━━━━━━━━━━━━━━━
-👤 *الاسم:* ${name}
-🎓 *البريد الجامعي:* ${email}
-🆔 *الرقم الأكاديمي:* ${studentId}
-💳 *محول من الرقم:* ${source}
-💰 *المبلغ المدفوع:* 100 ج.م + 2 ج.م رسوم (إن وجدت)
+👤 الاسم: ${name}
+🎓 البريد الجامعي: ${email}
+🆔 الرقم الأكاديمي: ${studentId}
+💳 محول من الرقم: ${source}
+💰 المبلغ المدفوع: 100 ج.م + 2 ج.م رسوم (إن وجدت)
 ━━━━━━━━━━━━━━━━━
-✅ تم التحويل بنجاح، برجاء إرفاق لقطة الشاشة للتحويل لتفعيل المحتوى فوراً.
-📚 *شكراً لثقتك، فريق د. سلمى سيرد عليك خلال دقائق.*`;
+✅ تم التحويل بنجاح، برجاء ارسال اسكرين شوت للتحويل لتفعيل المحتوى فوراً.
+📚 شكراً لثقتك، فريق د. سلمى سيرد عليك خلال دقائق.`;
 
-      const phone = "201211244260";
+      const phone = "201064651563";
       const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(invoiceMessage)}`;
       window.open(waLink, '_blank');
     }
