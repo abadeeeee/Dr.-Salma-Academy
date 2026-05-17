@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="مراجعة البرمجة النهائية مع د. سلمى منتصر - شرح شامل ومكثف لمادة البرمجة للطلاب الجامعيين">
+  <title>مراجعة البرمجة النهائية | د. سلمى منتصر</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg-main: #020617;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-input: #0f172a;
+      --primary: #2563eb;
+      --primary-glow: rgba(37, 99, 235, 0.4);
+      --accent-tech: #38bdf8;
+      --accent-neon: #00f2fe;
+      --accent-warn: #fbbf24;
+      --whatsapp: #22c55e;
+      --whatsapp-glow: rgba(34, 197, 94, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-glow: rgba(56, 189, 248, 0.2);
+    }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* شبكة خلفية متحركة ناعمة */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* HEADER SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-text .tech-badge {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--border-glow);
+      color: var(--accent-tech);
+      padding: 6px 20px;
+      border-radius: 60px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-text h1 {
+      font-size: clamp(38px, 5.2vw, 60px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 20%, #cbd5e1 50%, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p.hero-desc {
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    /* كرت التعريف */
+    .profile-master-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+
+    .profile-master-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+      list-style: none;
+    }
+
+    .profile-features-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .profile-features-list li i {
+      width: 32px;
+      height: 32px;
+      background: rgba(56, 189, 248, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-tech);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-epic {
+      padding: 14px 32px;
+      border-radius: 60px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: none;
+      font-size: 15px;
+    }
+
+    .btn-epic-primary {
+      background: linear-gradient(105deg, var(--primary), #1e40af);
+      color: white;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-epic-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-epic-outline {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-epic-outline:hover {
+      border-color: var(--accent-tech);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    /* حاوية اللوجو - هتستقبل صورتك */
+    .image-frame-holder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .custom-logo-wrapper {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(145deg, #0f172acc, #020617cc);
+      border-radius: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 25px 40px -20px black;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 32px;
+    }
+
+    /* Features grid */
+    .features-section { padding: 60px 0; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, var(--accent-tech));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
+
+    .glow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+    }
+
+    .glow-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 28px;
+      padding: 35px 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .glow-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 25px 30px -20px rgba(56, 189, 248, 0.2);
+    }
+
+    .glow-card .icon-wrapper {
+      width: 75px;
+      height: 75px;
+      background: linear-gradient(145deg, rgba(56,189,248,0.1), rgba(37,99,235,0.05));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      font-size: 32px;
+      color: var(--accent-tech);
+    }
+
+    .glow-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
+    .glow-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+
+    /* MASTER PRICING CARD */
+    .pricing-section { padding: 60px 0; }
+    .master-pricing-card {
+      background: linear-gradient(125deg, rgba(15,23,42,0.85), rgba(30,41,59,0.85));
+      backdrop-filter: blur(14px);
+      border-radius: 40px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 40px 60px -20px black;
+    }
+
+    .pricing-visual {
+      position: relative;
+      background: #030712;
+      min-height: 320px;
+    }
+    .pricing-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+    }
+    .floating-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(105deg, #dc2626, #b91c1c);
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 12px;
+      box-shadow: 0 5px 12px rgba(220,38,38,0.4);
+    }
+    .pricing-details-side { padding: 45px; }
+
+    .super-price-tag {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+    .super-price-tag .old-price {
+      font-size: 24px;
+      color: #f87171;
+      text-decoration: line-through;
+      font-weight: 700;
+    }
+    .super-price-tag .new-price {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--accent-neon);
+      text-shadow: 0 0 12px rgba(0,242,254,0.3);
+      line-height: 1;
+    }
+    .super-price-tag .period { color: var(--text-muted); font-size: 14px; font-weight: 500; }
+
+    .luxury-payment-container {
+      background: rgba(2, 6, 23, 0.6);
+      border-radius: 24px;
+      padding: 24px;
+      margin: 20px 0 10px;
+    }
+    .luxury-payment-container h4 { font-size: 18px; margin-bottom: 18px; color: #e2e8f0; }
+
+    .luxury-pay-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-input);
+      padding: 14px 20px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pay-meta span { font-family: monospace; font-size: 18px; font-weight: 800; letter-spacing: 1px; color: white; }
+    .pay-meta label { font-size: 11px; color: var(--text-muted); font-weight: 700; display: block; }
+    .luxury-copy-btn {
+      background: #1e293b;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--accent-tech);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .luxury-copy-btn:hover { background: var(--primary); color: white; }
+    .alert-micro-box {
+      background: rgba(251,191,36,0.08);
+      border-right: 4px solid #fbbf24;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fde68a;
+      margin: 12px 0 16px;
+    }
+    .instapay-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-tech);
+      cursor: pointer;
+    }
+    .instapay-trigger:hover { text-decoration: underline; }
+
+    /* FORM */
+    .checkout-section { padding: 40px 0 90px; }
+    .cyber-form-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border-radius: 36px;
+      padding: 45px;
+      max-width: 680px;
+      margin: auto;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .form-header { text-align: center; margin-bottom: 32px; }
+    .form-header h3 { font-size: 28px; font-weight: 800; }
+    .cyber-group { margin-bottom: 24px; }
+    .cyber-group label { display: block; font-weight: 700; margin-bottom: 8px; color: #cbd5e1; }
+    .cyber-group input {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-input);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      color: white;
+      font-size: 15px;
+      transition: 0.2s;
+    }
+    .cyber-group input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37,99,235,0.3);
+    }
+    .btn-submit-whatsapp {
+      width: 100%;
+      background: linear-gradient(115deg, var(--whatsapp), #15803d);
+      border: none;
+      padding: 16px;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 17px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .btn-submit-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(34,197,94,0.4);
+    }
+
+    /* MODAL */
+    .custom-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2,6,23,0.96);
+      backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+    }
+    .modal-main-card {
+      background: #0f172ae6;
+      border-radius: 40px;
+      padding: 30px;
+      max-width: 460px;
+      width: 90%;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+    .modal-close-trigger {
+      background: #1e293b;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: white;
+      position: absolute;
+      top: 15px; left: 15px;
+      cursor: pointer;
+    }
+    .modal-main-card img { width: 100%; border-radius: 24px; margin-top: 15px; }
+
+    /* FLOATING BTN */
+    .sticky-whatsapp-button {
+      position: fixed;
+      bottom: 25px;
+      left: 20px;
+      background: var(--whatsapp);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      z-index: 999;
+      transition: 0.2s;
+    }
+    .sticky-whatsapp-button:hover { transform: scale(1.08); background: #16a34a; }
+
+    footer {
+      background: #010409;
+      padding: 50px 0 35px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+    .footer-brand { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
+    .social-circuits {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 24px 0 20px;
+    }
+    .social-circuits a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: 0.2s;
+    }
+    .social-circuits a:hover { background: var(--primary); transform: translateY(-5px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .hero-content, .master-pricing-card { grid-template-columns: 1fr; }
+      .hero-content .hero-text { order: 1; text-align: center; }
+      .hero-actions { justify-content: center; }
+      .profile-features-list { justify-content: center; text-align: start; }
+      .pricing-visual { height: 260px; }
+      .pricing-details-side { padding: 35px; }
+    }
+    @media (max-width: 550px) {
+      .cyber-form-card { padding: 25px 18px; }
+      .luxury-pay-row { flex-direction: column; align-items: stretch; text-align: center; }
+      .btn-epic { padding: 12px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text animate__animated animate__fadeInRight">
+        <span class="tech-badge"><i class="fa-solid fa-microchip"></i> Learning Reimagined</span>
+        <h1>مراجعة <span>Programming</span><br>مع د. سلمى منتصر</h1>
+        <p class="hero-desc">
+          حصيلة خمس سنوات من التدريس والخبرة الأكاديمية في مراجعة واحدة. منهج متكامل بأسلوب عملي يخليك تلم المنهج وتفهم الأكواد وتحل أي امتحان بثقة.
+        </p>
+        
+        <div class="profile-master-card">
+          <h3><i class="fa-solid fa-award"></i> الخبرات الأكاديمية والمهنية:</h3>
+          <ul class="profile-features-list">
+            <li><i class="fa-solid fa-university"></i> معيدة بكلية الحاسبات والمعلومات</li>
+            <li><i class="fa-solid fa-laptop-code"></i> معيدة بوزارة الاتصالات ITI</li>
+            <li><i class="fa-solid fa-graduation-cap"></i> باحثة ماجستير في تكنولوجيا Blockchain</li>
+            <li><i class="fa-solid fa-star"></i> مؤسس أكاديمية Dr. Salma Academy</li>
+            <li><i class="fa-solid fa-clock"></i> خبرة تدريس جامعي لأكثر من 5 سنوات</li>
+          </ul>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#register-zone" class="btn-epic btn-epic-primary">احجز مقعدك الآن <i class="fa-solid fa-arrow-left"></i></a>
+          <a href="https://chat.whatsapp.com/HhEb8N1r4LTLBLi5BjL5Vp" target="_blank" class="btn-epic btn-epic-outline">جروب الواتساب المفتوح</a>
+        </div>
+      </div>
+
+      <!--这里是放置你的专属LOGO的区域，直接放图片logo.png -->
+      <div class="image-frame-holder animate__animated animate__fadeInLeft">
+        <div class="custom-logo-wrapper">
+          <img class="brand-logo-img" src="logo1.png" alt="شعار د. سلمى منتصر" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Dr.+Salma+Logo';">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container features-section">
+    <div class="section-header">
+      <h2>ماذا ستحصل عليه في هذه المراجعة؟</h2>
+      <p>مناهج دراسية محسّنة وتغطية شاملة لكل النقاط الأساسية</p>
+    </div>
+    <div class="glow-grid">
+      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-code-branch"></i></div><h4>فهم من الصفر</h4><p>بداية سلسة من الأساسيات حتى الاحتراف، نضمن لك إتقان المنطق البرمجي بكل سهولة.</p></div>
+      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-lightbulb"></i></div><h4>حل السهل الممتنع</h4><p>استراتيجيات ذهنية لحل المسائل البرمجية المعقدة وتطبيقها بأسلوب مباشر.</p></div>
+      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-file-invoice"></i></div><h4>أسئلة الامتحانات</h4><p>نموذج مكثف من الأسئلة المتكررة والتريكات العملية لضمان الدرجة النهائية.</p></div>
+      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-rocket"></i></div><h4>مراجعة خاطفة شاملة</h4><p>تغطية المنهج بالكامل بأسلوب مرن ومباشر، استعد لامتحانك بأقل وقت وأعلى جودة.</p></div>
+    </div>
+  </section>
+
+  <section class="container pricing-section" id="register-zone">
+    <div class="section-header">
+      <h2>بوابة الاشتراك والدفع الرقمي</h2>
+      <p>تفاصيل العرض الحصري لباقة المراجعة النهائية</p>
+    </div>
+    <div class="master-pricing-card">
+      <div class="pricing-visual">
+        <span class="floating-badge">🔥 خصم المراجعات 🔥</span>
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" alt="Programming code concept">
+      </div>
+      <div class="pricing-details-side">
+        <h2 style="font-size: 32px;">📘 Programming Revision</h2>
+        <p style="margin-bottom: 20px; color:#cbd5e1;">المراجعة الشاملة لمادة البرمجة – محاضرات مسجلة، تمارين تفاعلية، ونماذج امتحانات.</p>
+        <div class="super-price-tag">
+          <span class="old-price">150 جنيه</span>
+          <span class="new-price">100 جنيه</span>
+          <span class="period"> / للمراجعة الكاملة</span>
+        </div>
+        <div class="luxury-payment-container">
+          <h4>وسائل الدفع المعتمدة:</h4>
+          <div class="luxury-pay-row">
+            <div class="pay-meta"><label>📱 فودافون كاش / محافظ إلكترونية</label><span id="voda-wallet">01119368983</span></div>
+            <button class="luxury-copy-btn" onclick="executeCopy('voda-wallet', this)">نسخ الرقم</button>
+          </div>
+          <div class="alert-micro-box">
+            ⚡ يُرجى تحويل 100 جنيه (المراجعة) + 2 جنيه رسوم شبكة التحويلات لتفعيل اشتراكك فورياً.
+          </div>
+          <div class="luxury-pay-row">
+            <div class="pay-meta"><label>🏦 رقم الحساب البنكي (Instapay)</label><span id="insta-card">5078086726548154</span></div>
+            <button class="luxury-copy-btn" onclick="executeCopy('insta-card', this)">نسخ الرقم</button>
+          </div>
+          <div class="instapay-trigger" onclick="handleModalVisibility(true)">
+            <i class="fa-solid fa-circle-info"></i> عرض خطوات التحويل عبر انستا باي
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container checkout-section">
+    <div class="cyber-form-card">
+      <div class="form-header">
+        <h3>✅ تأكيد بيانات الاشتراك</h3>
+        <p>املأ بياناتك بدقة وسيتم التواصل عبر واتساب لتفعيل المراجعة</p>
+      </div>
+      <div class="cyber-group">
+        <label>الاسم الرباعي للطالب</label>
+        <input type="text" id="form-student-name" placeholder="مثال: سلمى محمد منتصر">
+      </div>
+      <div class="cyber-group">
+        <label>البريد الإلكتروني الجامعي</label>
+        <input type="email" id="form-student-email" placeholder="student@university.edu">
+      </div>
+      <div class="cyber-group">
+        <label>الرقم الأكاديمي (Student ID)</label>
+        <input type="text" id="form-student-id" placeholder="مثال: 202512345">
+      </div>
+      <div class="cyber-group">
+        <label>رقم المحفظة أو الحساب المحول منه</label>
+        <input type="text" id="form-pay-source" placeholder="الرقم المستخدم في الإرسال">
+      </div>
+      <button class="btn-submit-whatsapp" onclick="processInvoiceSubmission()">
+        <span>تأكيد الاشتراك وإرسال الفاتورة</span>
+        <i class="fa-brands fa-whatsapp"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- Modal instapay -->
+  <div class="custom-modal" id="instapay-guide-popup" onclick="closeModalOnOuterClick(event)">
+    <div class="modal-main-card">
+      <button class="modal-close-trigger" onclick="handleModalVisibility(false)"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="font-weight: 800;">🔐 خطوات انستا باي</h3>
+      <p style="margin: 15px 0; font-size: 14px;">1. افتح تطبيق انستا باي <br>2. اختر تحويل لبطاقة: <strong>5078086726548154</strong><br>3. اكتب الاسم:- سلمى منتصر<br>4. بعد التحويل، أرسل لقطة الشاشة عبر الواتساب لتفعيل حسابك</p>
+      </p>
+      <!-- 👇👇👇 هنا مكان صورتك 👇👇👇 -->
+      <img src="instapay.png" alt="خطوات انستا باي" style="width: 100%; max-width: 300px; margin: 15px auto 0; display: block; border-radius: 16px;">
+    </div>
+    </div>
+  </div>
+
+  <a href="https://wa.me/201211244260" target="_blank" class="sticky-whatsapp-button" title="تواصل واتساب">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">✨ Dr. Salma Academy</div>
+      <p style="color: #94a3b8;">منصة تعليمية رائدة لتأهيل مبرمجي المستقبل بأحدث المنهجيات</p>
+      <div class="social-circuits">
+        <a href="https://www.facebook.com/share/188jZAboFD/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://youtube.com/@engsalmamontaser1977" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/201211244260" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+      <p style="color: #475569; font-size: 13px;">&copy; 2026 د. سلمى منتصر - جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script>
+    function executeCopy(elementId, btn) {
+      const textElement = document.getElementById(elementId);
+      if(!textElement) return;
+      const text = textElement.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-regular fa-circle-check"></i> تم النسخ';
+        btn.style.background = '#22c55e';
+        btn.style.color = 'white';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      }).catch(() => {
+        alert('يرجى نسخ الرقم يدوياً: ' + text);
+      });
+    }
+
+    function handleModalVisibility(show) {
+      const popup = document.getElementById('instapay-guide-popup');
+      popup.style.display = show ? 'flex' : 'none';
+    }
+
+    function closeModalOnOuterClick(e) {
+      if(e.target === document.getElementById('instapay-guide-popup')) handleModalVisibility(false);
+    }
+
+    function processInvoiceSubmission() {
+      const name = document.getElementById('form-student-name').value.trim();
+      const email = document.getElementById('form-student-email').value.trim();
+      const studentId = document.getElementById('form-student-id').value.trim();
+      const source = document.getElementById('form-pay-source').value.trim();
+
+      if (!name || !email || !studentId || !source) {
+        alert("❌ يرجى ملء جميع الحقول (الاسم، البريد، الرقم الأكاديمي، رقم المحفظة) لإتمام الطلب.");
+        return;
+      }
+
+      const invoiceMessage = 
+`📌 *فاتورة اشتراك مراجعة البرمجة - د. سلمى منتصر* 📌
+━━━━━━━━━━━━━━━━━
+👤 *الاسم:* ${name}
+🎓 *البريد الجامعي:* ${email}
+🆔 *الرقم الأكاديمي:* ${studentId}
+💳 *محول من الرقم:* ${source}
+💰 *المبلغ المدفوع:* 100 ج.م + 2 ج.م رسوم (إن وجدت)
+━━━━━━━━━━━━━━━━━
+✅ تم التحويل بنجاح، برجاء إرفاق لقطة الشاشة للتحويل لتفعيل المحتوى فوراً.
+📚 *شكراً لثقتك، فريق د. سلمى سيرد عليك خلال دقائق.*`;
+
+      const phone = "201211244260";
+      const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(invoiceMessage)}`;
+      window.open(waLink, '_blank');
+    }
+  </script>
+</body>
+</html>
