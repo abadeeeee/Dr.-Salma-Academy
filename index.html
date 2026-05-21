@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="مراجعة البرمجة النهائية مع د. سلمى منتصر - شرح شامل ومكثف لمادة البرمجة للطلاب الجامعيين">
-  <title>مراجعة البرمجة النهائية | د. سلمى منتصر</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>أكاديمية د. سلمى منتصر | المراجعات النهائية الفاخرة</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,731 +17,1208 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Cairo', sans-serif;
-      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent;
     }
 
     :root {
-      --bg-main: #020617;
-      --bg-card: rgba(15, 23, 42, 0.75);
-      --bg-input: #0f172a;
-      --primary: #2563eb;
-      --primary-glow: rgba(37, 99, 235, 0.4);
-      --accent-tech: #38bdf8;
-      --accent-neon: #00f2fe;
-      --accent-warn: #fbbf24;
-      --whatsapp: #22c55e;
-      --whatsapp-glow: rgba(34, 197, 94, 0.3);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-glow: rgba(56, 189, 248, 0.2);
+      --bg-main: #030712;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --bg-input: #0b0f19;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.06);
+      --accent-neon: #06b6d4;
+      --primary: #3b82f6;
     }
 
     body {
       background: var(--bg-main);
       color: var(--text-main);
       overflow-x: hidden;
-      position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px;
-      z-index: -2;
-      pointer-events: none;
+      line-height: 1.6;
+      padding-bottom: 90px;
     }
 
     .container {
-      width: 90%;
-      max-width: 1280px;
+      width: 92%;
+      max-width: 1200px;
       margin: 0 auto;
-      position: relative;
     }
-
-    .hero {
-      min-height: 100vh;
+    
+    .top-bar-controls {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
-      padding: 80px 0 60px;
+      padding: 15px 0 5px;
     }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .hero-text .tech-badge {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid var(--border-glow);
-      color: var(--accent-tech);
-      padding: 6px 20px;
-      border-radius: 60px;
-      font-size: 13px;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 25px;
-      backdrop-filter: blur(4px);
-    }
-
-    .hero-text h1 {
-      font-size: clamp(38px, 5.2vw, 60px);
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #ffffff 20%, #cbd5e1 50%, var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-text p.hero-desc {
-      color: var(--text-muted);
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 35px;
-    }
-
-    .profile-master-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 28px;
-      padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.4);
-      transition: transform 0.2s;
-    }
-
-    .profile-master-card h3 {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .profile-features-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-      list-style: none;
-    }
-
-    .profile-features-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-      color: #e2e8f0;
-      font-size: 14px;
-    }
-
-    .profile-features-list li i {
-      width: 32px;
-      height: 32px;
-      background: rgba(56, 189, 248, 0.12);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent-tech);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .btn-epic {
-      padding: 14px 32px;
-      border-radius: 60px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      border: none;
-      font-size: 15px;
-    }
-
-    .btn-epic-primary {
-      background: linear-gradient(105deg, var(--primary), #1e40af);
-      color: white;
-      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-epic-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.45);
-    }
-
-    .btn-epic-outline {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: white;
-      backdrop-filter: blur(4px);
-    }
-
-    .btn-epic-outline:hover {
-      border-color: var(--accent-tech);
-      background: rgba(56, 189, 248, 0.08);
-    }
-
-    .image-frame-holder {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .custom-logo-wrapper {
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 1 / 1;
-      background: linear-gradient(145deg, #0f172acc, #020617cc);
-      border-radius: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      box-shadow: 0 25px 40px -20px black;
-      overflow: hidden;
-      padding: 20px;
-    }
-
-    .brand-logo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 32px;
-    }
-
-    .features-section { padding: 60px 0; }
-    .section-header {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-    .section-header h2 {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 900;
-      background: linear-gradient(135deg, #fff, var(--accent-tech));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-    .section-header p {
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 12px auto 0;
-    }
-
-    .glow-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 28px;
-    }
-
-    .glow-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 28px;
-      padding: 35px 20px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .glow-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(56, 189, 248, 0.5);
-      box-shadow: 0 25px 30px -20px rgba(56, 189, 248, 0.2);
-    }
-
-    .glow-card .icon-wrapper {
-      width: 75px;
-      height: 75px;
-      background: linear-gradient(145deg, rgba(56,189,248,0.1), rgba(37,99,235,0.05));
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 25px;
-      font-size: 32px;
-      color: var(--accent-tech);
-    }
-
-    .glow-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 10px; }
-    .glow-card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
-
-    .pricing-section { padding: 60px 0; }
-    .master-pricing-card {
-      background: linear-gradient(125deg, rgba(15,23,42,0.85), rgba(30,41,59,0.85));
-      backdrop-filter: blur(14px);
-      border-radius: 40px;
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 40px 60px -20px black;
-    }
-
-    .pricing-visual {
-      position: relative;
-      background: #030712;
-      min-height: 320px;
-    }
-    .pricing-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.75;
-    }
-    .floating-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: linear-gradient(105deg, #dc2626, #b91c1c);
-      padding: 6px 18px;
-      border-radius: 60px;
-      font-weight: 800;
-      font-size: 12px;
-      box-shadow: 0 5px 12px rgba(220,38,38,0.4);
-    }
-    .pricing-details-side { padding: 45px; }
-
-    .super-price-tag {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
-    }
-    .super-price-tag .old-price {
-      font-size: 24px;
-      color: #f87171;
-      text-decoration: line-through;
-      font-weight: 700;
-    }
-    .super-price-tag .new-price {
-      font-size: 56px;
-      font-weight: 900;
-      color: var(--accent-neon);
-      text-shadow: 0 0 12px rgba(0,242,254,0.3);
-      line-height: 1;
-    }
-    .super-price-tag .period { color: var(--text-muted); font-size: 14px; font-weight: 500; }
-
-    .luxury-payment-container {
-      background: rgba(2, 6, 23, 0.6);
-      border-radius: 24px;
-      padding: 24px;
-      margin: 20px 0 10px;
-    }
-    .luxury-payment-container h4 { font-size: 18px; margin-bottom: 18px; color: #e2e8f0; }
-
-    .luxury-pay-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-input);
-      padding: 14px 20px;
-      border-radius: 20px;
-      margin-bottom: 14px;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .pay-meta span { font-family: monospace; font-size: 18px; font-weight: 800; letter-spacing: 1px; color: white; }
-    .pay-meta label { font-size: 11px; color: var(--text-muted); font-weight: 700; display: block; }
-    .luxury-copy-btn {
-      background: #1e293b;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 12px;
-      color: var(--accent-tech);
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .luxury-copy-btn:hover { background: var(--primary); color: white; }
-    .alert-micro-box {
-      background: rgba(251,191,36,0.08);
-      border-right: 4px solid #fbbf24;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #fde68a;
-      margin: 12px 0 16px;
-    }
-    .instapay-trigger {
+    
+    .live-students-counter {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 100px;
+      padding: 4px 12px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-top: 12px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      color: var(--accent-tech);
-      cursor: pointer;
+      color: var(--accent-neon);
+      backdrop-filter: blur(4px);
+      direction: ltr;
     }
-    .instapay-trigger:hover { text-decoration: underline; }
+    .live-students-counter i {
+      font-size: 10px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.4; transform: scale(0.8);}
+      100% { opacity: 1; transform: scale(1);}
+    }
 
-    .checkout-section { padding: 40px 0 90px; }
-    .cyber-form-card {
+    .hero { text-align: center; padding: 15px 0 20px; }
+    .logo-container {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 15px;
       background: var(--bg-card);
-      backdrop-filter: blur(14px);
-      border-radius: 36px;
-      padding: 45px;
-      max-width: 680px;
-      margin: auto;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .form-header { text-align: center; margin-bottom: 32px; }
-    .form-header h3 { font-size: 28px; font-weight: 800; }
-    .cyber-group { margin-bottom: 24px; }
-    .cyber-group label { display: block; font-weight: 700; margin-bottom: 8px; color: #cbd5e1; }
-    .cyber-group input {
-      width: 100%;
-      padding: 14px 18px;
-      background: var(--bg-input);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      color: white;
-      font-size: 15px;
-      transition: 0.2s;
-    }
-    .cyber-group input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(37,99,235,0.3);
-    }
-    .btn-submit-whatsapp {
-      width: 100%;
-      background: linear-gradient(115deg, var(--whatsapp), #15803d);
-      border: none;
-      padding: 16px;
-      border-radius: 60px;
-      font-weight: 800;
-      font-size: 17px;
-      color: white;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: 0.25s;
+      overflow: hidden;
     }
-    .btn-submit-whatsapp:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px rgba(34,197,94,0.4);
+    
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
-    .custom-modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(2,6,23,0.96);
-      backdrop-filter: blur(12px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-    }
-    .modal-main-card {
-      background: #0f172ae6;
-      border-radius: 40px;
-      padding: 30px;
-      max-width: 460px;
-      width: 90%;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.1);
+    .card-media-gate {
+      width: 100%;
+      height: 140px;
       position: relative;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-    .modal-close-trigger {
-      background: #1e293b;
-      border: none;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      color: white;
+    
+    .course-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .modern-course-card:hover .course-img {
+      transform: scale(1.05);
+    }
+    
+    .card-badge-floating {
       position: absolute;
-      top: 15px; left: 15px;
+      top: 12px;
+      right: 12px;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(4px);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-neon);
+      z-index: 2;
+    }
+
+    .tech-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      color: var(--accent-neon);
+      padding: 4px 14px; border-radius: 100px; font-size: 11px; font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 { font-size: 24px; font-weight: 900; margin-bottom: 8px; }
+    .hero-desc { font-size: 13px; color: var(--text-muted); max-width: 450px; margin: 0 auto 20px; }
+
+    .bio-summary-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 20px; padding: 18px; text-align: right; margin-bottom: 30px;
+    }
+    .bio-summary-card h3 { font-size: 15px; font-weight: 800; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .bio-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .bio-item { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; }
+    .bio-item i { font-size: 11px; color: var(--accent-neon); background: rgba(6, 182, 212, 0.1); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+    .tabs-scroll-wrapper { overflow-x: auto; white-space: nowrap; padding-bottom: 10px; margin-bottom: 10px; scrollbar-width: none; }
+    .tabs-scroll-wrapper::-webkit-scrollbar { display: none; }
+    .tab-trigger {
+      display: inline-block; background: var(--bg-card); border: 1px solid var(--border-color);
+      color: var(--text-muted); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 13px; margin-left: 8px; cursor: pointer;
+    }
+    .tab-trigger.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .carousel-container { position: relative; margin: 0 -4% 30px; padding: 5px 4% 5px; }
+    .level-content-pane { display: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 15px; scrollbar-width: none; }
+    .level-content-pane::-webkit-scrollbar { display: none; }
+    .level-content-pane.active { display: flex; gap: 16px; }
+
+    .modern-course-card {
+      scroll-snap-align: center; flex: 0 0 285px;
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: 24px;
+      overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      transition: border-color 0.3s ease;
+    }
+    .modern-course-card.card-selected {
+      border-color: var(--accent-neon);
+    }
+    
+    .card-info-hub { padding: 16px; text-align: right; }
+    .card-info-hub h4 { font-size: 15px; font-weight: 800; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
+    
+    .price-tag-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; background: rgba(0,0,0,0.02); padding: 6px 10px; border-radius: 100px; }
+    .price-tag-row .price-current { font-size: 16px; font-weight: 900; }
+    .price-tag-row .price-slashed { font-size: 11px; color: #ef4444; text-decoration: line-through; }
+    
+    .action-card-btn {
+      width: 100%; background: var(--primary); color: #fff; border: none; padding: 10px; border-radius: 14px; font-weight: 700; font-size: 13px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .action-card-btn.selected-btn {
+      background: #10b981;
+    }
+
+    .carousel-tracker-line {
+      width: 60px; height: 4px; background: rgba(255,255,255,0.1); margin: -10px auto 25px; border-radius: 100px; position: relative; overflow: hidden;
+    }
+    .carousel-tracker-fill {
+      position: absolute; top: 0; right: 0; width: 35%; height: 100%; background: var(--accent-neon); border-radius: 100px; transition: all 0.3s ease;
+    }
+
+    .testimonials-ticker-bar {
+      width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.05), rgba(59, 130, 246, 0.05));
+      border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+      padding: 14px 0; overflow: hidden; display: flex; margin-bottom: 30px;
+    }
+    .ticker-track {
+      display: flex; gap: 20px; white-space: nowrap; width: max-content;
+      animation: infiniteScrollTicker 35s linear infinite;
+    }
+    .ticker-item {
+      display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 700; color: var(--text-main);
+      background: rgba(255, 255, 255, 0.03); padding: 8px 18px; border-radius: 50px; border: 1px solid var(--border-color);
+    }
+    .ticker-item i.fa-star { color: #eab308; font-size: 11px; }
+
+    @keyframes infiniteScrollTicker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(33.33%); }
+    }
+
+    .scarcity-timer-panel {
+      background: rgba(239, 68, 68, 0.06); border: 1px dashed rgba(239, 68, 68, 0.3);
+      border-radius: 16px; padding: 12px; margin-bottom: 20px; text-align: center;
+    }
+    .timer-countdown { font-size: 16px; font-weight: 900; color: #ef4444; font-family: monospace; margin-top: 4px; letter-spacing: 1px; }
+
+    .editorial-form-card { background: var(--bg-card); border-radius: 28px; padding: 20px 16px; border: 1px solid var(--border-color); }
+    .form-title-area { text-align: center; margin-bottom: 20px; }
+    .form-title-area h3 { font-size: 17px; font-weight: 800; }
+    
+    .live-status-panel { background: rgba(59, 130, 246, 0.06); border: 1px dashed var(--primary); border-radius: 16px; padding: 12px; margin-bottom: 15px; text-align: center; }
+    .live-status-panel p { font-size: 12px; margin-bottom: 4px; }
+    .live-status-panel h5 { font-size: 14px; color: var(--text-main); font-weight: 800; margin-bottom: 4px; line-height: 1.4; }
+    .live-status-panel .live-price { color: var(--accent-neon); font-size: 18px; font-weight: 900; }
+
+    .input-cell { margin-bottom: 15px; text-align: right; }
+    .input-cell label { display: block; font-size: 12px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+    .input-cell input { width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-main); font-size: 13px; }
+
+    .custom-dropdown-trigger {
+      width: 100%; padding: 14px 16px; background: var(--bg-input); border: 1px solid var(--border-color);
+      border-radius: 12px; color: var(--text-main); font-size: 13px; text-align: right; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; font-weight: 600;
+    }
+    .custom-dropdown-trigger i { color: var(--accent-neon); font-size: 14px; }
+
+    .courses-overlay-modal {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(8px);
+      display: none; justify-content: center; align-items: flex-end; z-index: 200000;
+    }
+    .courses-modal-card {
+      width: 100%; max-width: 480px; background: #0b0f19;
+      border-top-left-radius: 32px; border-top-right-radius: 32px;
+      border: 1px solid var(--border-color); padding: 24px 20px;
+      max-height: 85vh; overflow-y: auto; text-align: right;
+    }
+    .courses-modal-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    }
+    .courses-modal-header h4 { font-size: 16px; font-weight: 800; color: var(--text-main); }
+    .close-modal-btn {
+      background: var(--bg-card); border: none; width: 32px; height: 32px;
+      border-radius: 50%; color: var(--text-main); cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+
+    .modal-course-list { display: flex; flex-direction: column; gap: 12px; }
+    .premium-row-option {
+      background: rgba(17, 24, 39, 0.6); border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 16px; display: flex; align-items: center;
+      justify-content: space-between; cursor: pointer; transition: all 0.25s ease;
+    }
+    .premium-row-option:hover { background: rgba(34, 211, 238, 0.02); }
+    .premium-row-option.selected {
+      border-color: var(--accent-neon);
+      background: rgba(6, 182, 212, 0.04);
+      box-shadow: inset 0 0 12px rgba(6, 182, 212, 0.05);
+    }
+    
+    .option-right-box { display: flex; align-items: center; gap: 14px; }
+    .option-check-circle {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 10px; color: transparent;
+      transition: all 0.2s ease;
+    }
+    .premium-row-option.selected .option-check-circle {
+      border-color: var(--accent-neon); background: var(--accent-neon); color: #030712;
+    }
+    
+    .option-meta-text { display: flex; flex-direction: column; gap: 2px; }
+    .option-meta-text .opt-level { font-size: 10px; font-weight: 700; color: var(--text-muted); }
+    .option-meta-text .opt-title { font-size: 14px; font-weight: 800; color: var(--text-main); }
+    
+    .option-price-label { font-size: 14px; font-weight: 900; color: var(--accent-neon); }
+
+    .payment-method-selector {
+      background: var(--bg-input);
+      border-radius: 16px;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border-color);
+    }
+    .method-title {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      display: block;
+    }
+    .method-options {
+      display: flex;
+      gap: 12px;
+    }
+    .method-option {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
-    .modal-main-card img { width: 100%; border-radius: 24px; margin-top: 15px; }
+    .method-option.selected {
+      border-color: var(--accent-neon);
+      background: rgba(6, 182, 212, 0.1);
+    }
+    .method-option i { font-size: 18px; }
+    .method-option.selected i { color: var(--accent-neon); }
 
-    .sticky-whatsapp-button {
-      position: fixed;
-      bottom: 25px;
-      left: 20px;
-      background: var(--whatsapp);
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      color: white;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-      z-index: 999;
-      transition: 0.2s;
+    .native-payment-box { background: rgba(0,0,0,0.02); border-radius: 16px; padding: 14px; margin: 15px 0; border: 1px solid var(--border-color); }
+    .pay-row-item { display: flex; flex-direction: column; align-items: stretch; background: var(--bg-input); padding: 12px; border-radius: 14px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.02); }
+    
+    .pay-top-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .pay-meta-data { text-align: right; }
+    .pay-meta-data label { font-size: 9px; color: var(--text-muted); display: block; margin-bottom: 2px; }
+    .pay-meta-data span { font-size: 13px; font-weight: 700; }
+    
+    .mini-copy-trigger { background: var(--bg-card); border: 1px solid var(--border-color); padding: 5px 12px; border-radius: 50px; font-size: 11px; color: var(--primary); font-weight: 700; cursor: pointer; }
+    
+    .pay-price-badge {
+      background: rgba(255,255,255,0.03); border-radius: 8px; padding: 6px 12px;
+      display: flex; justify-content: space-between; align-items: center; font-size: 12px;
     }
-    .sticky-whatsapp-button:hover { transform: scale(1.08); background: #16a34a; }
+    .pay-price-badge .price-heading { color: var(--text-muted); font-size: 11px; }
+    .pay-price-badge .price-num { font-weight: 800; color: var(--accent-neon); }
 
-    footer {
-      background: #010409;
-      padding: 50px 0 35px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.03);
-    }
-    .footer-brand { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
-    .social-circuits {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin: 24px 0 20px;
-    }
-    .social-circuits a {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #0f172a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      transition: 0.2s;
-    }
-    .social-circuits a:hover { background: var(--primary); transform: translateY(-5px); }
+    .notice-micro-banner { background: rgba(245, 158, 11, 0.08); border-right: 3px solid #f59e0b; padding: 8px; border-radius: 6px; font-size: 11px; color: #f59e0b; text-align: right; margin-bottom: 10px; }
+    .instapay-popup-btn { text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 10px; cursor: pointer; text-decoration: underline; }
 
-    @media (max-width: 1000px) {
-      .hero-content, .master-pricing-card { grid-template-columns: 1fr; }
-      .hero-content .hero-text { order: 1; text-align: center; }
-      .hero-actions { justify-content: center; }
-      .profile-features-list { justify-content: center; text-align: start; }
-      .pricing-visual { height: 260px; }
-      .pricing-details-side { padding: 35px; }
+    .swipe-to-confirm-wrapper {
+      position: relative; width: 100%; height: 56px; background: var(--bg-input);
+      border-radius: 100px; border: 1px solid var(--border-color); overflow: hidden;
+      display: flex; align-items: center; justify-content: center; margin-top: 15px;
     }
-    @media (max-width: 550px) {
-      .cyber-form-card { padding: 25px 18px; }
-      .luxury-pay-row { flex-direction: column; align-items: stretch; text-align: center; }
-      .btn-epic { padding: 12px 24px; }
+    .swipe-bg-text { font-size: 13px; font-weight: 800; color: var(--text-muted); pointer-events: none; z-index: 1; transition: opacity 0.2s ease; }
+    .swipe-track-progress { position: absolute; top: 0; right: 0; height: 100%; background: rgba(34, 197, 94, 0.2); width: 0; transition: width 0.05s linear; }
+    .swipe-handle-trigger {
+      position: absolute; top: 3px; left: 3px; width: 50px; height: 50px;
+      background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;
+      cursor: grab; z-index: 2; box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3); transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
+
+    .sticky-bottom-cart-shelf {
+      position: fixed; bottom: 0; left: 0; width: 100%;
+      background: var(--bg-card); border-top: 1px solid var(--border-color);
+      box-shadow: 0 -8px 25px rgba(0,0,0,0.1); padding: 12px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 9999; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sticky-bottom-cart-shelf.active { transform: translateY(0); }
+    .meta-shelf-info { text-align: right; }
+    .meta-shelf-info h5 { font-size: 12px; font-weight: 800; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .meta-shelf-info span { font-size: 14px; font-weight: 900; color: var(--accent-neon); }
+    .shelf-action-cta { background: var(--primary); color: #fff; border: none; padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; }
+
+    .bottom-sheet-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 100000; }
+    .sheet-card { background: var(--bg-card); border-radius: 24px; padding: 24px; width: 90%; max-width: 400px; text-align: center; border: 1px solid var(--border-color); position: relative; }
+    .close-sheet-btn { position: absolute; top: 15px; left: 15px; background: var(--bg-input); border: none; width: 30px; height: 30px; border-radius: 50%; color: var(--text-main); }
+
+    footer { background: rgba(0,0,0,0.03); padding: 25px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 11px; color: var(--text-muted); }
+    .footer-icons { display: flex; justify-content: center; gap: 16px; margin-bottom: 10px; }
+    .footer-icons a { color: var(--text-muted); font-size: 16px; }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text animate__animated animate__fadeInRight">
-        <span class="tech-badge"><i class="fa-solid fa-microchip"></i> Learning Reimagined</span>
-        <h1>مراجعة <span>Programming</span><br>مع د. سلمى منتصر</h1>
-        <p class="hero-desc">
-          حصيلة خمس سنوات من التدريس والخبرة الأكاديمية في مراجعة واحدة. منهج متكامل بأسلوب عملي يخليك تلم المنهج وتفهم الأكواد وتحل أي امتحان بثقة.
-        </p>
-        
-        <div class="profile-master-card">
-          <h3><i class="fa-solid fa-award"></i> الخبرات الأكاديمية والمهنية:</h3>
-          <ul class="profile-features-list">
-            <li><i class="fa-solid fa-university"></i> معيدة بكلية الحاسبات والمعلومات</li>
-            <li><i class="fa-solid fa-laptop-code"></i> معيدة بوزارة الاتصالات ITI</li>
-            <li><i class="fa-solid fa-graduation-cap"></i> باحثة ماجستير في تكنولوجيا Blockchain</li>
-            <li><i class="fa-solid fa-star"></i> مؤسس أكاديمية Dr. Salma Academy</li>
-            <li><i class="fa-solid fa-clock"></i> خبرة تدريس جامعي لأكثر من 5 سنوات</li>
-          </ul>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#register-zone" class="btn-epic btn-epic-primary">احجز مقعدك الآن <i class="fa-solid fa-arrow-left"></i></a>
-          <a href="https://chat.whatsapp.com/HhEb8N1r4LTLBLi5BjL5Vp" target="_blank" class="btn-epic btn-epic-outline">جروب الواتساب المفتوح</a>
-        </div>
-      </div>
-
-      <div class="image-frame-holder animate__animated animate__fadeInLeft">
-        <div class="custom-logo-wrapper">
-          <img class="brand-logo-img" src="logo1.png" alt="شعار د. سلمى منتصر" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Dr.+Salma+Logo';">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container features-section">
-    <div class="section-header">
-      <h2>ماذا ستحصل عليه في هذه المراجعة؟</h2>
-      <p>مناهج دراسية محسّنة وتغطية شاملة لكل النقاط الأساسية</p>
-    </div>
-    <div class="glow-grid">
-      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-code-branch"></i></div><h4>فهم من الصفر</h4><p>بداية سلسة من الأساسيات حتى الاحتراف، نضمن لك إتقان المنطق البرمجي بكل سهولة.</p></div>
-      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-lightbulb"></i></div><h4>حل السهل الممتنع</h4><p>استراتيجيات ذهنية لحل المسائل البرمجية المعقدة وتطبيقها بأسلوب مباشر.</p></div>
-      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-file-invoice"></i></div><h4>أسئلة الامتحانات</h4><p>نموذج مكثف من الأسئلة المتكررة والتريكات العملية لضمان الدرجة النهائية.</p></div>
-      <div class="glow-card"><div class="icon-wrapper"><i class="fa-solid fa-rocket"></i></div><h4>مراجعة خاطفة شاملة</h4><p>تغطية المنهج بالكامل بأسلوب مرن ومباشر، استعد لامتحانك بأقل وقت وأعلى جودة.</p></div>
-    </div>
-  </section>
-
-  <section class="container pricing-section" id="register-zone">
-    <div class="section-header">
-      <h2>بوابة الاشتراك والدفع الرقمي</h2>
-      <p>تفاصيل العرض الحصري لباقة المراجعة النهائية</p>
-    </div>
-    <div class="master-pricing-card">
-      <div class="pricing-visual">
-        <span class="floating-badge">🔥 خصم المراجعات 🔥</span>
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" alt="Programming code concept">
-      </div>
-      <div class="pricing-details-side">
-        <h2 style="font-size: 32px;">📘 Programming Revision</h2>
-        <p style="margin-bottom: 20px; color:#cbd5e1;">المراجعة الشاملة لمادة البرمجة – محاضرات مسجلة، تمارين تفاعلية، ونماذج امتحانات.</p>
-        <div class="super-price-tag">
-          <span class="old-price">150 جنيه</span>
-          <span class="new-price">100 جنيه</span>
-          <span class="period"> / للمراجعة الكاملة</span>
-        </div>
-        <div class="luxury-payment-container">
-          <h4>وسائل الدفع المعتمدة:</h4>
-          <div class="luxury-pay-row">
-            <div class="pay-meta"><label>📱 فودافون كاش / محافظ إلكترونية</label><span id="voda-wallet">01119368983</span></div>
-            <button class="luxury-copy-btn" onclick="executeCopy('voda-wallet', this)">نسخ الرقم</button>
-          </div>
-          <div class="alert-micro-box">
-            ⚡ يُرجى تحويل 100 جنيه (المراجعة) + 2 جنيه رسوم شبكة التحويلات لتفعيل اشتراكك فورياً.
-          </div>
-          <div class="luxury-pay-row">
-            <div class="pay-meta"><label>🏦 رقم البطاقة (Instapay)</label><span id="insta-card">5078086726548154</span></div>
-            <button class="luxury-copy-btn" onclick="executeCopy('insta-card', this)">نسخ الرقم</button>
-          </div>
-          <div class="instapay-trigger" onclick="handleModalVisibility(true)">
-            <i class="fa-solid fa-circle-info"></i> عرض خطوات التحويل عبر انستا باي
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container checkout-section">
-    <div class="cyber-form-card">
-      <div class="form-header">
-        <h3>✅ تأكيد بيانات الاشتراك</h3>
-        <p>املأ بياناتك بدقة وسيتم التواصل عبر واتساب لتفعيل المراجعة</p>
-      </div>
-      <div class="cyber-group">
-        <label>الاسم الرباعي للطالب</label>
-        <input type="text" id="form-student-name" placeholder="مثال: أحمد علي محمد">
-      </div>
-      <div class="cyber-group">
-        <label>البريد الإلكتروني الجامعي</label>
-        <input type="email" id="form-student-email" placeholder="2502xxx@student.eelu.edu.eg">
-      </div>
-      <div class="cyber-group">
-        <label>الرقم الأكاديمي (Student ID)</label>
-        <input type="text" id="form-student-id" placeholder="مثال: 2502xxx">
-      </div>
-      <div class="cyber-group">
-        <label>رقم المحفظة أو الحساب المحول منه</label>
-        <input type="text" id="form-pay-source" placeholder="الرقم المستخدم في الإرسال">
-      </div>
-      <button class="btn-submit-whatsapp" onclick="processInvoiceSubmission()">
-        <span>تأكيد الاشتراك وإرسال الفاتورة</span>
-        <i class="fa-brands fa-whatsapp"></i>
-      </button>
-    </div>
-  </section>
-
-  <div class="custom-modal" id="instapay-guide-popup" onclick="closeModalOnOuterClick(event)">
-    <div class="modal-main-card">
-      <button class="modal-close-trigger" onclick="handleModalVisibility(false)"><i class="fa-solid fa-xmark"></i></button>
-      <h3 style="font-weight: 800;">🔐 خطوات انستا باي</h3>
-      <p style="margin: 15px 0; font-size: 14px;">1. افتح تطبيق انستا باي <br>2. اختر تحويل لبطاقة: <strong>5078086726548154</strong><br>3. اكتب الاسم:- سلمى منتصر<br>4. بعد التحويل، أرسل لقطة الشاشة عبر الواتساب لتفعيل حسابك</p>
-      <img src="instapay.png" alt="خطوات انستا باي" style="width: 100%; max-width: 300px; margin: 15px auto 0; display: block; border-radius: 16px;">
+  <div class="container top-bar-controls">
+    <div class="live-students-counter">
+      <i class="fa-solid fa-user"></i>
+      <span id="liveStudentsCount">0</span>
+      <span>طالب متصل الآن</span>
     </div>
   </div>
 
-  <a href="https://wa.me/201064651563" target="_blank" class="sticky-whatsapp-button" title="تواصل واتساب">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
+  <section class="hero">
+    <div class="container">
+      <div class="logo-container">
+        <div class="logo-placeholder">
+          <img src="logo.png" alt="Logo" class="logo-img">
+        </div>
+      </div>
+      <span class="tech-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Dr.Salma Academy </span>
+      <h1>منصة المراجعات النهائية<br>د. سلمى منتصر</h1>
+      <p class="hero-desc">حصيلة التدريس والخبرة الأكاديمية بالجامعات في باقات مكثفة مخصصة وسلسة كلياً لهاتفك.</p>
+
+      <div class="bio-summary-card">
+        <h3><i class="fa-solid fa-graduation-cap"></i> السيرة الذاتية الأكاديمية:</h3>
+        <div class="bio-grid">
+          <div class="bio-item"><i class="fa-solid fa-university"></i> معيدة بكلية الحاسبات والمعلومات</div>
+          <div class="bio-item"><i class="fa-solid fa-laptop-code"></i> معيدة بوزارة الاتصالات ITI</div>
+          <div class="bio-item"><i class="fa-solid fa-link"></i> باحثة ماجستير في تكنولوجيا Blockchain</div>
+          <div class="bio-item"><i class="fa-solid fa-star"></i> خبرة تدريس جامعي لأكثر من 5 سنوات</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="tabs-scroll-wrapper">
+      <button class="tab-trigger active" onclick="toggleFilterTab(event, 'l1', 0.25)">Level 1</button>
+      <button class="tab-trigger" onclick="toggleFilterTab(event, 'l2', 0.50)">Level 2</button>
+      <button class="tab-trigger" onclick="toggleFilterTab(event, 'l3', 0.75)">Level 3</button>
+      <button class="tab-trigger" onclick="toggleFilterTab(event, 'l4', 1.0)">Level 4</button>
+    </div>
+
+    <div class="carousel-container">
+      <div id="l1" class="level-content-pane active" onscroll="handleCarouselScroll(this)">
+        <div class="modern-course-card" id="card-l1-prog">
+          <div class="card-media-gate">
+            <span class="card-badge-floating">🔥 الأكثر طلباً</span>
+            <img src="Programming.png" alt="Programming" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-code"></i> Programming</h4>
+            <div class="price-tag-row">
+              <span class="price-current">100 ج.م</span>
+              <span class="price-slashed">150 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l1-prog" onclick="toggleCardSelection('Level 1: Programming', 100, 'card-l1-prog', 'btn-l1-prog')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l1-logic">
+          <div class="card-media-gate">
+            <img src="Logic Design.png" alt="Logic Design" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-diagram-project"></i> Logic Design</h4>
+            <div class="price-tag-row">
+              <span class="price-current">100 ج.م</span>
+              <span class="price-slashed">150 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l1-logic" onclick="toggleCardSelection('Level 1: Logic Design', 120, 'card-l1-logic', 'btn-l1-logic')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="l2" class="level-content-pane" onscroll="handleCarouselScroll(this)">
+        <div class="modern-course-card" id="card-l2-ml">
+          <div class="card-media-gate">
+            <img src="Machine Learning.png" alt="Machine Learning" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-brain"></i> Machine Learning</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l2-ml" onclick="toggleCardSelection('Level 2: Machine Learning', 140, 'card-l2-ml', 'btn-l2-ml')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l2-or">
+          <div class="card-media-gate">
+            <img src="Operation Research.png" alt="Operation Research" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-calculator"></i> Operation Research</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l2-or" onclick="toggleCardSelection('Level 2: Operation Research', 130, 'card-l2-or', 'btn-l2-or')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l2-ds">
+          <div class="card-media-gate">
+            <img src="WebTechnology.png" alt="Web Technology" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-database"></i> Web Technology</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l2-ds" onclick="toggleCardSelection('Level 2: Web Technology', 162, 'card-l2-ds', 'btn-l2-ds')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="l3" class="level-content-pane" onscroll="handleCarouselScroll(this)">
+        <div class="modern-course-card" id="card-l3-sw">
+          <div class="card-media-gate">
+            <img src="Advanced Sw.png" alt="Advanced SW" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-laptop-file"></i> Advanced SW</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l3-sw" onclick="toggleCardSelection('Level 3: Advanced SW', 162, 'card-l3-sw', 'btn-l3-sw')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l3-db">
+          <div class="card-media-gate">
+            <img src="Pattern recognition.png" alt="Pattern recognition" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-table"></i> Pattern recognition</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l3-db" onclick="toggleCardSelection('Level 3: Pattern recognition', 162, 'card-l3-db', 'btn-l3-db')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l3-web">
+          <div class="card-media-gate">
+            <img src="NLP.png" alt="NLP" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-globe"></i> NLP</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l3-web" onclick="toggleCardSelection('Level 3: NLP', 162, 'card-l3-web', 'btn-l3-web')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l3-security">
+          <div class="card-media-gate">
+            <img src="Ethical hacking.png" alt="Ethical Hacking" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-shield-haltered"></i> Ethical Hacking</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l3-security" onclick="toggleCardSelection('Level 3: Ethical Hacking', 162, 'card-l3-security', 'btn-l3-security')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="l4" class="level-content-pane" onscroll="handleCarouselScroll(this)">
+        <div class="modern-course-card" id="card-l4-ai">
+          <div class="card-media-gate">
+            <img src="Selected lab AI.png" alt="Selected lab AI" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-flask"></i> Selected lab AI</h4>
+            <div class="price-tag-row">
+              <span class="price-current">162 ج.م</span>
+              <span class="price-slashed">200 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l4-ai" onclick="toggleCardSelection('Level 4: Selected lab in AI', 162, 'card-l4-ai', 'btn-l4-ai')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-tracker-line">
+      <div class="carousel-tracker-fill" id="dynamic-bar-filler"></div>
+    </div>
+  </main>
+
+  <div class="testimonials-ticker-bar">
+    <div class="ticker-track">
+      <div class="ticker-item"><i class="fa-solid fa-star"></i> شرح ومراجعة programming نينچا 🔥</div>
+      <div class="ticker-item"><i class="fa-solid fa-star"></i> ربنا يبارك فى حضرتك , حضرتك تستحقى اكتر من كده حضرتك مش بتهملى اى حاجه صغيره 💎</div>
+      <div class="ticker-item"><i class="fa-solid fa-star"></i> حبيت اشكر حضرتك علي الشرح المبسط الجميل يا دكتور 🥰</div>
+      <div class="ticker-item"><i class="fa-solid fa-star"></i> فينك يا دكتره من بدري حاجات زي ده فاهمني؟ 🤝</div>
+      <div class="ticker-item"><i class="fa-solid fa-star"></i> الـ msq كانت كلها من المراجعه كالعادة 🚀</div>
+    </div>
+  </div>
+
+  <section class="container" id="billing-anchor">
+    <div class="scarcity-timer-panel">
+      <div style="font-size: 11px; font-weight: 700; color: var(--text-main);"><i class="fa-solid fa-hourglass-half"></i> ينتهي عرض الحجز المبكر والخصم الحالي لكل مادة خلال:</div>
+      <div class="timer-countdown" id="fomo-timer">00:00:00</div>
+    </div>
+
+    <div class="editorial-form-card">
+      <div class="form-title-area">
+        <h3>✅ مراجعة الفاتورة وبيانات التأكيد</h3>
+      </div>
+
+      <div class="live-status-panel" id="reactive-box" style="display: none;">
+        <p>المواد النشطة للمراجعة الحالية:</p>
+        <h5 id="target-course-title">-</h5>
+        <div class="live-price" id="target-course-cost">0 ج.م</div>
+      </div>
+
+      <div class="input-cell">
+        <label>المواد المطلوبة</label>
+        <button type="button" class="custom-dropdown-trigger" onclick="openCoursesModal()" id="ui-dropdown-btn">
+          <span id="dropdown-btn-label">-- اضغط هنا لاختيار المواد المطلوبة --</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="input-cell">
+        <label>الاسم الرباعي للطالب</label>
+        <input type="text" id="ui-name" placeholder="أحمد علي محمد...">
+      </div>
+
+      <div class="input-cell">
+        <label>البريد الإلكتروني الجامعي</label>
+        <input type="email" id="ui-email" placeholder="2502xxx@student.eelu.edu.eg">
+      </div>
+
+      <div class="input-cell">
+        <label>الرقم الأكاديمي (ID)</label>
+        <input type="text" id="ui-id" placeholder="مثال: 2502xxx">
+      </div>
+
+      <div class="input-cell">
+        <label>رقم المحفظة المرسل منها</label>
+        <input type="text" id="ui-source" placeholder="الرقم المستعمل للتحويل">
+      </div>
+
+      <div class="payment-method-selector">
+        <span class="method-title">اختر وسيلة الدفع:</span>
+        <div class="method-options">
+          <div class="method-option" id="method-vodafone" onclick="selectPaymentMethod('vodafone')">
+            <i class="fa-solid fa-mobile-alt"></i>
+            <span>فودافون كاش</span>
+          </div>
+          <div class="method-option" id="method-instapay" onclick="selectPaymentMethod('instapay')">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>انستا باي</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="native-payment-box">
+        
+        <div class="pay-row-item">
+          <div class="pay-top-line">
+            <div class="pay-meta-data">
+              <label>📱 فودافون كاش / كاش المحافظ (+2 جنيه)</label>
+              <span id="w-voda">01119368983</span>
+            </div>
+            <button class="mini-copy-trigger" onclick="copyTextHub('w-voda', this)">نسخ</button>
+          </div>
+          <div class="pay-price-badge">
+            <span class="price-heading">المبلغ المطلوب الإرسال لكاش:</span>
+            <span class="price-num" id="voda-live-price">0 ج.م</span>
+          </div>
+        </div>
+
+        <div class="notice-micro-banner" id="reactive-notice">
+          ⚡ يرجى اختيار المواد لتحديث المبالغ بدقة.
+        </div>
+
+        <div class="pay-row-item">
+          <div class="pay-top-line">
+            <div class="pay-meta-data">
+              <label>🏦 بطاقة انستا باي Instapay (السعر العادي)</label>
+              <span id="w-insta">5078086726548154</span>
+            </div>
+            <button class="mini-copy-trigger" onclick="copyTextHub('w-insta', this)">نسخ</button>
+          </div>
+          <div class="pay-price-badge">
+            <span class="price-heading">المبلغ المطلوب لـ Instapay:</span>
+            <span class="price-num" id="insta-live-price">0 ج.م</span>
+          </div>
+        </div>
+        
+        <div class="instapay-popup-btn" onclick="toggleSheet(true)"><i class="fa-solid fa-circle-info"></i> طريقة تحويل Instapay المباشرة</div>
+      </div>
+
+      <div class="swipe-to-confirm-wrapper" id="swipe-track">
+        <div class="swipe-bg-text" id="swipe-text">اسحب السهم الأخضر لليمن للتأكيد ➔</div>
+        <div class="swipe-track-progress" id="swipe-fill"></div>
+        <div class="swipe-handle-trigger" id="swipe-knob"><i class="fa-solid fa-chevron-right"></i></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="courses-overlay-modal" id="global-courses-modal" onclick="closeModalOnOuter(event)">
+    <div class="courses-modal-card animate__animated animate__fadeInUp animate__faster">
+      <div class="courses-modal-header">
+        <h4>اختر مواد المراجعة (يمكنك تحديد أكثر من مادة)</h4>
+        <button class="close-modal-btn" onclick="closeCoursesModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      
+      <div class="modal-course-list">
+        <div class="premium-row-option" id="mod-l1-prog" onclick="selectModalOption('Level 1: Programming', 100, 'mod-l1-prog', 'card-l1-prog', 'btn-l1-prog')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 1</span>
+              <span class="opt-title">Programming</span>
+            </div>
+          </div>
+          <div class="option-price-label">100 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l1-logic" onclick="selectModalOption('Level 1: Logic Design', 100, 'mod-l1-logic', 'card-l1-logic', 'btn-l1-logic')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 1</span>
+              <span class="opt-title">Logic Design</span>
+            </div>
+          </div>
+          <div class="option-price-label">100 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l2-ml" onclick="selectModalOption('Level 2: Machine Learning', 162, 'mod-l2-ml', 'card-l2-ml', 'btn-l2-ml')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 2</span>
+              <span class="opt-title">Machine Learning</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l2-or" onclick="selectModalOption('Level 2: Operation Research', 162, 'mod-l2-or', 'card-l2-or', 'btn-l2-or')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 2</span>
+              <span class="opt-title">Operation Research</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l2-ds" onclick="selectModalOption('Level 2: Web Technology', 162, 'mod-l2-ds', 'card-l2-ds', 'btn-l2-ds')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 2</span>
+              <span class="opt-title">Web Technology</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l3-sw" onclick="selectModalOption('Level 3: Advanced SW', 162, 'mod-l3-sw', 'card-l3-sw', 'btn-l3-sw')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 3</span>
+              <span class="opt-title">Advanced SW</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l3-db" onclick="selectModalOption('Level 3: Pattern recognition', 162, 'mod-l3-db', 'card-l3-db', 'btn-l3-db')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 3</span>
+              <span class="opt-title">Pattern recognition</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l3-web" onclick="selectModalOption('Level 3: NLP', 162, 'mod-l3-web', 'card-l3-web', 'btn-l3-web')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 3</span>
+              <span class="opt-title">NLP</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l3-security" onclick="selectModalOption('Level 3: Ethical Hacking', 162, 'mod-l3-security', 'card-l3-security', 'btn-l3-security')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 3</span>
+              <span class="opt-title">Ethical Hacking</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+
+        <div class="premium-row-option" id="mod-l4-ai" onclick="selectModalOption('Level 4: Selected lab in AI', 162, 'mod-l4-ai', 'card-l4-ai', 'btn-l4-ai')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 4</span>
+              <span class="opt-title">Selected lab AI</span>
+            </div>
+          </div>
+          <div class="option-price-label">162 ج.م</div>
+        </div>
+      </div>
+      
+      <button class="action-card-btn" style="margin-top:20px; background:var(--primary);" onclick="closeCoursesModal()">تأكيد الاختيار العودة للفاتورة</button>
+    </div>
+  </div>
+
+  <div class="sticky-bottom-cart-shelf" id="global-floating-cart">
+    <div class="meta-shelf-info">
+      <h5 id="shelf-title">المواد المحددة</h5>
+      <span id="shelf-price">0 ج.م</span>
+    </div>
+    <button class="shelf-action-cta" onclick="scrollToBillingForm()">أكمل الحجز الآن <i class="fa-solid fa-arrow-down"></i></button>
+  </div>
+
+  <div class="bottom-sheet-modal" id="sheet-guide" onclick="closeSheetOnOuter(event)">
+    <div class="sheet-card animate__animated animate__fadeInUp">
+      <button class="close-sheet-btn" onclick="toggleSheet(false)"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="font-weight: 800; margin-bottom: 12px;">🔐 دليل انستا باي السريع</h3>
+      <p style="font-size: 13px; text-align: right; line-height: 1.8;">
+        1. افتح تطبيق Instapay من هاتفك.<br>
+        2. اختر التحويل إلى <strong>رقم بطاقة بنكية</strong>.<br>
+        3. ضع رقم البطاقة المنسوخ: <strong style="color: var(--accent-neon);">5078086726548154</strong>.<br>
+        4. اسم الحساب المعتمد: <strong>سلمى منتصر</strong>.<br>
+        5. احفظ لقطة شاشة بعد تأكيد الإرسال لتسليمها بالواتساب.
+      </p>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
-      <div class="footer-brand">✨ Dr. Salma Academy</div>
-      <p style="color: #94a3b8;">منصة تعليمية رائدة لتأهيل مبرمجي المستقبل بأحدث المنهجيات</p>
-      <div class="social-circuits">
+      <div class="footer-icons">
         <a href="https://www.facebook.com/share/188jZAboFD/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="https://youtube.com/@engsalmamontaser1977" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://wa.me/201064651563" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
-      <p style="color: #475569; font-size: 13px;">&copy; 2026 د. سلمى منتصر - جميع الحقوق محفوظة</p>
+      <p>&copy; 2026 د. سلمى منتصر - جميع الحقوق محفوظة</p>
     </div>
   </footer>
 
   <script>
-    function executeCopy(elementId, btn) {
-      const textElement = document.getElementById(elementId);
-      if(!textElement) return;
-      const text = textElement.innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-regular fa-circle-check"></i> تم النسخ';
-        btn.style.background = '#22c55e';
-        btn.style.color = 'white';
+    let selectedCourses = [];
+    let selectedPaymentMethod = 'vodafone';
+
+    function initLiveStudentCounter() {
+      const studentSpan = document.getElementById('liveStudentsCount');
+      if (!studentSpan) return;
+      
+      let currentCount = 5;
+      
+      const updateCounter = () => {
+        let newCount;
+        do {
+          newCount = Math.floor(Math.random() * 5) + 3;
+        } while (newCount === currentCount);
+        currentCount = newCount;
+        studentSpan.innerText = currentCount;
+        
+        let nextInterval = Math.floor(Math.random() * 4000) + 3000;
         setTimeout(() => {
-          btn.innerHTML = originalHTML;
-          btn.style.background = '';
-          btn.style.color = '';
-        }, 2000);
-      }).catch(() => {
-        alert('يرجى نسخ الرقم يدوياً: ' + text);
-      });
+          updateCounter();
+        }, nextInterval);
+      };
+      
+      setTimeout(updateCounter, 2000);
+    }
+    
+    initLiveStudentCounter();
+    
+    function initPersistentTimer() {
+      const totalInitialSeconds = 24 * 60 * 60;
+      let targetTimestamp = localStorage.getItem('academy_timer_target');
+
+      if (!targetTimestamp) {
+        targetTimestamp = Date.now() + (totalInitialSeconds * 1000);
+        localStorage.setItem('academy_timer_target', targetTimestamp);
+      }
+
+      function updateClock() {
+        let remainingTimeMs = targetTimestamp - Date.now();
+
+        if (remainingTimeMs <= 0) {
+          targetTimestamp = Date.now() + (totalInitialSeconds * 1000);
+          localStorage.setItem('academy_timer_target', targetTimestamp);
+          remainingTimeMs = totalInitialSeconds * 1000;
+        }
+
+        let totalSecs = Math.floor(remainingTimeMs / 1000);
+        let hrs = Math.floor(totalSecs / 3600).toString().padStart(2, '0');
+        let mins = Math.floor((totalSecs % 3600) / 60).toString().padStart(2, '0');
+        let secs = (totalSecs % 60).toString().padStart(2, '0');
+
+        document.getElementById('fomo-timer').innerText = `${hrs}:${mins}:${secs}`;
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+    
+    initPersistentTimer();
+
+    function handleCarouselScroll(element) {
+      if(element.scrollWidth > element.clientWidth) {
+        const percentage = (element.scrollLeft / (element.scrollWidth - element.clientWidth)) * 100;
+        document.getElementById('dynamic-bar-filler').style.width = Math.min(100, Math.max(5, percentage)) + '%';
+      }
     }
 
-    function handleModalVisibility(show) {
-      const popup = document.getElementById('instapay-guide-popup');
-      popup.style.display = show ? 'flex' : 'none';
+    function toggleFilterTab(e, paneId, trackerFillFactor) {
+      const panes = document.getElementsByClassName("level-content-pane");
+      for (let i = 0; i < panes.length; i++) panes[i].classList.remove("active");
+      
+      const tabs = document.getElementsByClassName("tab-trigger");
+      for (let i = 0; i < tabs.length; i++) tabs[i].classList.remove("active");
+      
+      document.getElementById(paneId).classList.add("active");
+      e.currentTarget.classList.add("active");
+      
+      const activePane = document.getElementById(paneId);
+      setTimeout(() => {
+        if(activePane.scrollWidth > activePane.clientWidth) {
+          const percentage = (activePane.scrollLeft / (activePane.scrollWidth - activePane.clientWidth)) * 100;
+          document.getElementById('dynamic-bar-filler').style.width = Math.min(100, Math.max(5, percentage)) + '%';
+        } else {
+          document.getElementById('dynamic-bar-filler').style.width = '50%';
+        }
+      }, 50);
     }
 
-    function closeModalOnOuterClick(e) {
-      if(e.target === document.getElementById('instapay-guide-popup')) handleModalVisibility(false);
+    function openCoursesModal() {
+      document.getElementById('global-courses-modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
 
-    function processInvoiceSubmission() {
-      const name = document.getElementById('form-student-name').value.trim();
-      const email = document.getElementById('form-student-email').value.trim();
-      const studentId = document.getElementById('form-student-id').value.trim();
-      const source = document.getElementById('form-pay-source').value.trim();
+    function closeCoursesModal() {
+      document.getElementById('global-courses-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
 
-      if (!name || !email || !studentId || !source) {
-        alert("❌ يرجى ملء جميع الحقول (الاسم، البريد، الرقم الأكاديمي، رقم المحفظة) لإتمام الطلب.");
+    function closeModalOnOuter(e) {
+      if(e.target === document.getElementById('global-courses-modal')) {
+        closeCoursesModal();
+      }
+    }
+
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      document.querySelectorAll('.method-option').forEach(opt => opt.classList.remove('selected'));
+      if(method === 'vodafone') {
+        document.getElementById('method-vodafone').classList.add('selected');
+      } else {
+        document.getElementById('method-instapay').classList.add('selected');
+      }
+      processGlobalPriceState();
+    }
+
+    function executeCourseSelectionLogic(name, price, modalOptionId, mainCardId, mainBtnId) {
+      const lookupIndex = selectedCourses.findIndex(c => c.name === name);
+      
+      let targetOptionEl = document.getElementById(modalOptionId);
+      let targetCardEl = document.getElementById(mainCardId);
+      let targetBtnEl = document.getElementById(mainBtnId);
+
+      if(lookupIndex > -1) {
+        selectedCourses.splice(lookupIndex, 1);
+        if(targetOptionEl) targetOptionEl.classList.remove('selected');
+        if(targetCardEl) targetCardEl.classList.remove('card-selected');
+        if(targetBtnEl) {
+          targetBtnEl.classList.remove('selected-btn');
+          let text = targetBtnEl.querySelector('.btn-text');
+          if(text) text.innerText = 'اختيار ومتابعة';
+        }
+      } else {
+        selectedCourses.push({ name: name, price: price });
+        if(targetOptionEl) targetOptionEl.classList.add('selected');
+        if(targetCardEl) targetCardEl.classList.add('card-selected');
+        if(targetBtnEl) {
+          targetBtnEl.classList.add('selected-btn');
+          let text = targetBtnEl.querySelector('.btn-text');
+          if(text) text.innerText = '✓ تم التحديد';
+        }
+      }
+
+      processGlobalPriceState();
+      
+      const shelf = document.getElementById('global-floating-cart');
+      if(selectedCourses.length > 0) {
+        shelf.classList.add('active');
+      } else {
+        shelf.classList.remove('active');
+      }
+    }
+
+    function toggleCardSelection(name, price, cardId, btnId) {
+      let optId = '';
+      if(name.includes('Programming')) optId = 'mod-l1-prog';
+      else if(name.includes('Logic Design')) optId = 'mod-l1-logic';
+      else if(name.includes('Machine Learning')) optId = 'mod-l2-ml';
+      else if(name.includes('Operation Research')) optId = 'mod-l2-or';
+      else if(name.includes('Web Technology')) optId = 'mod-l2-ds';
+      else if(name.includes('Advanced SW')) optId = 'mod-l3-sw';
+      else if(name.includes('Pattern recognition')) optId = 'mod-l3-db';
+      else if(name.includes('NLP')) optId = 'mod-l3-web';
+      else if(name.includes('Ethical Hacking')) optId = 'mod-l3-security';
+      else if(name.includes('Selected lab in AI')) optId = 'mod-l4-ai';
+      executeCourseSelectionLogic(name, price, optId, cardId, btnId);
+    }
+
+    function selectModalOption(name, price, optId, cardId, btnId) {
+      executeCourseSelectionLogic(name, price, optId, cardId, btnId);
+    }
+
+    function processGlobalPriceState() {
+      if(selectedCourses.length === 0) {
+        document.getElementById('reactive-box').style.display = 'none';
+        document.getElementById('dropdown-btn-label').innerText = '-- اضغط هنا لاختيار المواد المطلوبة --';
+        document.getElementById('shelf-title').innerText = 'اسم المواد المحددة';
+        document.getElementById('shelf-price').innerText = '0 ج.م';
+        document.getElementById('insta-live-price').innerText = '0 ج.م';
+        document.getElementById('voda-live-price').innerText = '0 ج.م';
+        document.getElementById('reactive-notice').innerHTML = `⚡ يرجى اختيار المواد لتحديث المبالغ بدقة.`;
         return;
       }
 
-      const invoiceMessage = 
-`📌 فاتورة اشتراك مراجعة البرمجة - د. سلمى منتصر 📌
-━━━━━━━━━━━━━━━━━
-👤 الاسم: ${name}
-🎓 البريد الجامعي: ${email}
-🆔 الرقم الأكاديمي: ${studentId}
-💳 محول من الرقم: ${source}
-💰 المبلغ المدفوع: 100 ج.م + 2 ج.م رسوم (إن وجدت)
-━━━━━━━━━━━━━━━━━
-✅ تم التحويل بنجاح، برجاء ارسال اسكرين شوت للتحويل لتفعيل المحتوى فوراً.
-📚 شكراً لثقتك، فريق د. سلمى سيرد عليك خلال دقائق.`;
+      let totalInstapayPrice = 0;
+      let namesArray = [];
+      
+      selectedCourses.forEach(course => {
+        totalInstapayPrice += course.price;
+        namesArray.push(course.name.split(': ')[1] || course.name);
+      });
 
-      const phone = "201064651563";
-      const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(invoiceMessage)}`;
-      window.open(waLink, '_blank');
+      let joinedNames = namesArray.join(' + ');
+      let totalVodafonePrice = totalInstapayPrice + 2;
+
+      document.getElementById('reactive-box').style.display = 'block';
+      document.getElementById('target-course-title').innerText = `${joinedNames}`;
+      document.getElementById('target-course-cost').innerText = `${totalInstapayPrice} ج.م`;
+      document.getElementById('dropdown-btn-label').innerText = `${joinedNames} [${totalInstapayPrice} ج.م]`;
+      document.getElementById('shelf-title').innerText = joinedNames;
+      document.getElementById('shelf-price').innerText = `${totalInstapayPrice} ج.م`;
+      document.getElementById('insta-live-price').innerText = `${totalInstapayPrice} ج.م`;
+      document.getElementById('voda-live-price').innerText = `${totalVodafonePrice} ج.م`;
+      document.getElementById('reactive-notice').innerHTML = 
+      `💸 السعر العادي (انستا باي): <strong>${totalInstapayPrice} ج.م</strong> | محفظة كاش (+2ج): <strong>${totalVodafonePrice} ج.م</strong>`;
     }
+
+    function scrollToBillingForm() {
+      document.getElementById('billing-anchor').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('global-floating-cart').classList.remove('active');
+    }
+
+    const knob = document.getElementById('swipe-knob');
+    const track = document.getElementById('swipe-track');
+    const fill = document.getElementById('swipe-fill');
+    const swipeText = document.getElementById('swipe-text');
+    let isDragging = false;
+    let startX = 0;
+    let currentLeft = 3;
+    let maxDistance = 0;
+
+    function updateMaxDistance() {
+      maxDistance = track.clientWidth - knob.clientWidth - 6;
+    }
+
+    window.addEventListener('resize', () => { updateMaxDistance(); });
+    updateMaxDistance();
+
+    knob.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      currentLeft = parseFloat(knob.style.left) || 3;
+      knob.style.transition = 'none';
+      fill.style.transition = 'none';
+      e.preventDefault();
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      let currentX = e.touches[0].clientX;
+      let deltaX = currentX - startX;
+      let newLeft = currentLeft + deltaX;
+      if (newLeft < 3) newLeft = 3;
+      if (newLeft > maxDistance) newLeft = maxDistance;
+      
+      knob.style.left = newLeft + 'px';
+      let progressPercent = ((newLeft - 3) / (maxDistance - 3)) * 100;
+      fill.style.width = Math.min(100, Math.max(0, progressPercent)) + '%';
+      
+      if(swipeText) {
+        swipeText.style.opacity = Math.max(0, 1 - (progressPercent / 100));
+      }
+      
+      if(newLeft >= maxDistance - 1) {
+        isDragging = false;
+        if (window.navigator && window.navigator.vibrate) window.navigator.vibrate(50);
+        handleSwipeExecutionSuccess();
+      }
+    });
+
+    window.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      knob.style.transition = 'left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+      fill.style.transition = 'width 0.3s ease';
+      knob.style.left = '3px';
+      fill.style.width = '0%';
+      if(swipeText) swipeText.style.opacity = '1';
+    });
+
+    function handleSwipeExecutionSuccess() {
+      setTimeout(() => {
+        knob.style.left = '3px';
+        fill.style.width = '0%';
+        if(swipeText) swipeText.style.opacity = '1';
+      }, 800);
+      validateAndSendInvoice();
+    }
+
+    function copyTextHub(id, btn) {
+      navigator.clipboard.writeText(document.getElementById(id).innerText).then(() => {
+        let old = btn.innerText; btn.innerText = 'تم!'; btn.style.color = '#22c55e';
+        setTimeout(() => { btn.innerText = old; btn.style.color = ''; }, 1500);
+      });
+    }
+
+    function toggleSheet(isOpen) { document.getElementById('sheet-guide').style.display = isOpen ? 'flex' : 'none'; }
+    function closeSheetOnOuter(e) { if(e.target === document.getElementById('sheet-guide')) toggleSheet(false); }
+
+    // ========== الفاتورة الجديدة المرتبة بدون إيموجي أو زخارف زائدة ==========
+    function validateAndSendInvoice() {
+      if (selectedCourses.length === 0) { 
+        alert("❌ يرجى اختيار مادة مراجعة واحدة على الأقل أولاً."); 
+        return; 
+      }
+      
+      const sName = document.getElementById('ui-name').value.trim();
+      const sEmail = document.getElementById('ui-email').value.trim();
+      const sId = document.getElementById('ui-id').value.trim();
+      const sSource = document.getElementById('ui-source').value.trim();
+
+      if (!sName || !sEmail || !sId || !sSource) { 
+        alert("❌ يرجى إدخال كافة الحقول المطلوبة لضمان حجز المواد."); 
+        return; 
+      }
+
+      let itemsListText = '';
+      selectedCourses.forEach((c, idx) => {
+        let courseName = c.name.split(': ')[1] || c.name;
+        itemsListText += ` - ${courseName}: ${c.price} ج.م\n`;
+      });
+
+      const finalAmount = selectedPaymentMethod === 'vodafone' ? (selectedCourses.reduce((sum, c) => sum + c.price, 0) + 2) : selectedCourses.reduce((sum, c) => sum + c.price, 0);
+      const methodName = selectedPaymentMethod === 'vodafone' ? 'فودافون كاش' : 'انستا باي';
+      const accountNumber = selectedPaymentMethod === 'vodafone' ? '01119368983' : '5078086726548154';
+      const accountOwner = "سلمى منتصر";
+
+      const invoiceText = 
+`فاتورة حجز مراجعة المواد - أكاديمية د. سلمى منتصر
+
+المواد المختارة:
+${itemsListText}
+بيانات الطالب:
+الاسم: ${sName}
+البريد الإلكتروني: ${sEmail}
+الرقم الأكاديمي: ${sId}
+الرقم المرسل منه: ${sSource}
+
+تفاصيل الدفع:
+وسيلة الدفع: ${methodName}
+رقم الحساب: ${accountNumber}
+المستفيد: ${accountOwner}
+إجمالي المبلغ: ${finalAmount} ج.م
+
+ملاحظة: تم إرفاق لقطة شاشة التحويل لتفعيل الحجز فوراً.`;
+
+      window.open(`https://wa.me/201064651563?text=${encodeURIComponent(invoiceText)}`, '_blank');
+    }
+    // ================================================================
+
+    selectPaymentMethod('vodafone');
   </script>
 </body>
 </html>
