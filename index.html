@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>أكاديمية د. سلمى منتصر | المراجعات النهائية </title>
+  <title>أكاديمية د. سلمى منتصر | المراجعات النهائية الفاخرة</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -387,8 +387,9 @@
     .close-sheet-btn { position: absolute; top: 15px; left: 15px; background: var(--bg-input); border: none; width: 30px; height: 30px; border-radius: 50%; color: var(--text-main); }
 
     footer { background: rgba(0,0,0,0.03); padding: 25px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 11px; color: var(--text-muted); }
-    .footer-icons { display: flex; justify-content: center; gap: 16px; margin-bottom: 10px; }
-    .footer-icons a { color: var(--text-muted); font-size: 16px; }
+    .footer-icons { display: flex; justify-content: center; gap: 20px; margin-bottom: 10px; flex-wrap: wrap; }
+    .footer-icons a { color: var(--text-muted); font-size: 18px; transition: 0.2s; width: 40px; height: 40px; background: rgba(255, 255, 255, 0.03); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .footer-icons a:hover { color: var(--accent-neon); background: rgba(6, 182, 212, 0.1); }
   </style>
 </head>
 <body>
@@ -461,7 +462,7 @@
               <span class="price-current">100 ج.م</span>
               <span class="price-slashed">150 ج.م</span>
             </div>
-            <button class="action-card-btn" id="btn-l1-logic" onclick="toggleCardSelection('Level 1: Logic Design', 120, 'card-l1-logic', 'btn-l1-logic')">
+            <button class="action-card-btn" id="btn-l1-logic" onclick="toggleCardSelection('Level 1: Logic Design', 100, 'card-l1-logic', 'btn-l1-logic')">
               <span class="btn-text">اختيار ومتابعة</span>
             </button>
           </div>
@@ -578,6 +579,23 @@
               <span class="price-slashed">200 ج.م</span>
             </div>
             <button class="action-card-btn" id="btn-l3-security" onclick="toggleCardSelection('Level 3: Ethical Hacking', 162, 'card-l3-security', 'btn-l3-security')">
+              <span class="btn-text">اختيار ومتابعة</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="modern-course-card" id="card-l3-micro">
+          <div class="card-media-gate">
+            <span class="card-badge-floating">⚙️ هندسة متقدمة</span>
+            <img src="Microcontroller.png" alt="Microcontroller" class="course-img">
+          </div>
+          <div class="card-info-hub">
+            <h4><i class="fa-solid fa-microchip"></i> Microcontroller</h4>
+            <div class="price-tag-row">
+              <span class="price-current">180 ج.م</span>
+              <span class="price-slashed">220 ج.م</span>
+            </div>
+            <button class="action-card-btn" id="btn-l3-micro" onclick="toggleCardSelection('Level 3: Microcontroller', 180, 'card-l3-micro', 'btn-l3-micro')">
               <span class="btn-text">اختيار ومتابعة</span>
             </button>
           </div>
@@ -830,6 +848,17 @@
           <div class="option-price-label">162 ج.م</div>
         </div>
 
+        <div class="premium-row-option" id="mod-l3-micro" onclick="selectModalOption('Level 3: Microcontroller', 180, 'mod-l3-micro', 'card-l3-micro', 'btn-l3-micro')">
+          <div class="option-right-box">
+            <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
+            <div class="option-meta-text">
+              <span class="opt-level">Level 3</span>
+              <span class="opt-title">Microcontroller</span>
+            </div>
+          </div>
+          <div class="option-price-label">180 ج.م</div>
+        </div>
+
         <div class="premium-row-option" id="mod-l4-ai" onclick="selectModalOption('Level 4: Selected lab in AI', 162, 'mod-l4-ai', 'card-l4-ai', 'btn-l4-ai')">
           <div class="option-right-box">
             <div class="option-check-circle"><i class="fa-solid fa-check"></i></div>
@@ -873,6 +902,7 @@
       <div class="footer-icons">
         <a href="https://www.facebook.com/share/188jZAboFD/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="https://youtube.com/@engsalmamontaser1977" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/201106519656" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
       <p>&copy; 2026 د. سلمى منتصر - جميع الحقوق محفوظة</p>
     </div>
@@ -1042,6 +1072,7 @@
       else if(name.includes('Pattern recognition')) optId = 'mod-l3-db';
       else if(name.includes('NLP')) optId = 'mod-l3-web';
       else if(name.includes('Ethical Hacking')) optId = 'mod-l3-security';
+      else if(name.includes('Microcontroller')) optId = 'mod-l3-micro';
       else if(name.includes('Selected lab in AI')) optId = 'mod-l4-ai';
       executeCourseSelectionLogic(name, price, optId, cardId, btnId);
     }
@@ -1167,7 +1198,6 @@
     function toggleSheet(isOpen) { document.getElementById('sheet-guide').style.display = isOpen ? 'flex' : 'none'; }
     function closeSheetOnOuter(e) { if(e.target === document.getElementById('sheet-guide')) toggleSheet(false); }
 
-    // ========== الفاتورة الجديدة المرتبة بدون إيموجي أو زخارف زائدة ==========
     function validateAndSendInvoice() {
       if (selectedCourses.length === 0) { 
         alert("❌ يرجى اختيار مادة مراجعة واحدة على الأقل أولاً."); 
@@ -1214,9 +1244,8 @@ ${itemsListText}
 
 ملاحظة: تم إرفاق لقطة شاشة التحويل لتفعيل الحجز فوراً.`;
 
-      window.open(`https://wa.me/201064651563?text=${encodeURIComponent(invoiceText)}`, '_blank');
+      window.open(`https://wa.me/201106519656?text=${encodeURIComponent(invoiceText)}`, '_blank');
     }
-    // ================================================================
 
     selectPaymentMethod('vodafone');
   </script>
